@@ -46,7 +46,7 @@ def move_square():
     
     LEFT_X, RIGHT_X = 150, 650
     BOTTOM_Y, TOP_Y = 100, 500
-    SPEED = 5
+    SPEED = 10
 
     RIGHT, UP, LEFT, DOWN = range(4)
 
