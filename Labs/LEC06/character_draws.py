@@ -134,9 +134,13 @@ def move_triangle():
     print("Move Triangle")
     pass
 
-while True:
+while not quit_requested:
     move_circle()
+    if quit_requested:
+        break
     move_square()
+    if quit_requested:
+        break
     move_triangle()
 
 
