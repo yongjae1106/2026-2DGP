@@ -6,6 +6,26 @@ grass = load_image('grass.png')
 character = load_image('character.png')
 
 def move_circle():
+    CENTER_X, CENTER_Y = 400, 300
+    RADIUS = 150
+    ANGLE_SPEED = 0.05
+    
+    angle = 0
+    
+    while True:
+        angle += ANGLE_SPEED
+        if angle >= 2 * math.pi:
+            break
+        
+        x = CENTER_X + RADIUS * math.cos(angle)
+        y = CENTER_Y + RADIUS * math.sin(angle)
+        
+        clear_canvas()
+        grass.draw(400, 30)
+        character.draw(x, y)
+        update_canvas()
+        delay(0.01)
+    
     print("Move Circle")
     pass
 
