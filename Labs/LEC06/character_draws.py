@@ -7,6 +7,13 @@ character = load_image('character.png')
 
 quit_requested = False
 
+def draw_render(x, y):
+    clear_canvas()
+    grass.draw(400, 30)
+    character.draw(x, y)
+    update_canvas()
+    delay(0.01)
+    
 def check_quit():
     global quit_requested
     for event in get_events():
@@ -33,11 +40,7 @@ def move_circle(SPEED):
         x = CENTER_X + RADIUS * math.cos(angle)
         y = CENTER_Y + RADIUS * math.sin(angle)
         
-        clear_canvas()
-        grass.draw(400, 30)
-        character.draw(x, y)
-        update_canvas()
-        delay(0.01)
+        draw_render(x, y)
     
     print("Move Circle")
     pass
@@ -78,11 +81,7 @@ def move_square(dir):
             x += dx / dist * SQUARE_SPEED
             y += dy / dist * SQUARE_SPEED
 
-        clear_canvas()
-        grass.draw(400, 30)
-        character.draw(x, y)
-        update_canvas()
-        delay(0.01)
+        draw_render(x, y)
 
     print("Move Square")
     pass
@@ -123,11 +122,7 @@ def move_triangle(dir):
             x += dx / dist * SPEED
             y += dy / dist * SPEED
 
-        clear_canvas()
-        grass.draw(400, 30)
-        character.draw(x, y)
-        update_canvas()
-        delay(0.01)
+        draw_render(x, y)
     print("Move Triangle")
     pass
 
