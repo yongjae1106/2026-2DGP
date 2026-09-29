@@ -15,11 +15,11 @@ def check_quit():
 
 def move_circle(SPEED):
     CENTER_X, CENTER_Y = 400, 300
-    RADIUS = 150
-    ANGLE_SPEED = 0.05
-
+    RADIUS = 200
+    ANGLE_SPEED = 0.05 * SPEED
+    
     angle = 0
-
+    
     running = True
     while running:
         check_quit()
@@ -27,18 +27,18 @@ def move_circle(SPEED):
             break
 
         angle += ANGLE_SPEED
-        if angle >= 2 * math.pi:
-            running = False
-
+        if abs(angle) >= 2 * math.pi:
+            break
+        
         x = CENTER_X + RADIUS * math.cos(angle)
         y = CENTER_Y + RADIUS * math.sin(angle)
-
+        
         clear_canvas()
         grass.draw(400, 30)
         character.draw(x, y)
         update_canvas()
         delay(0.01)
-
+    
     print("Move Circle")
     pass
 
