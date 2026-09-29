@@ -91,9 +91,9 @@ def move_square():
     pass
 
 def move_triangle():
-    CENTER_X, CENTER_Y = 400, 300
+    CENTER_X, CENTER_Y = 400, 200
     RADIUS = 250
-    SPEED = 5
+    SPEED = 10
 
     # 정삼각형의 세 꼭짓점을 중심에서 120도씩 떨어진 각도로 계산
     vertices = []
