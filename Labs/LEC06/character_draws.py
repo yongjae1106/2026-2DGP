@@ -15,8 +15,8 @@ def check_quit():
 
 def move_circle():
     CENTER_X, CENTER_Y = 400, 300
-    RADIUS = 130
-    ANGLE_SPEED = 0.08
+    RADIUS = 200
+    ANGLE_SPEED = 0.05
     
     angle = 0
     
