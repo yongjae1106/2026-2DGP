@@ -13,13 +13,13 @@ def check_quit():
         if event.type == SDL_QUIT:
             quit_requested = True
 
-def move_circle():
+def move_circle(SPEED):
     CENTER_X, CENTER_Y = 400, 300
-    RADIUS = 200
+    RADIUS = 150
     ANGLE_SPEED = 0.05
-    
+
     angle = 0
-    
+
     running = True
     while running:
         check_quit()
@@ -28,17 +28,17 @@ def move_circle():
 
         angle += ANGLE_SPEED
         if angle >= 2 * math.pi:
-            break
-        
+            running = False
+
         x = CENTER_X + RADIUS * math.cos(angle)
         y = CENTER_Y + RADIUS * math.sin(angle)
-        
+
         clear_canvas()
         grass.draw(400, 30)
         character.draw(x, y)
         update_canvas()
         delay(0.01)
-    
+
     print("Move Circle")
     pass
 
@@ -134,14 +134,17 @@ def move_triangle():
     print("Move Triangle")
     pass
 
+dir = 1
+
 while not quit_requested:
-    move_circle()
+    move_circle(dir)
     if quit_requested:
         break
-    move_square()
+    move_square(dir)
     if quit_requested:
         break
-    move_triangle()
+    move_triangle(dir)
+    dir *= -1
 
 
 close_canvas() 
