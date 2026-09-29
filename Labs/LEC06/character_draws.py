@@ -5,6 +5,14 @@ open_canvas(800, 600)
 grass = load_image('grass.png')
 character = load_image('character.png')
 
+quit_requested = False
+
+def check_quit():
+    global quit_requested
+    for event in get_events():
+        if event.type == SDL_QUIT:
+            quit_requested = True
+
 def move_circle():
     CENTER_X, CENTER_Y = 400, 300
     RADIUS = 130
