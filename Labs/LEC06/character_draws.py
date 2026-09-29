@@ -22,6 +22,10 @@ def move_circle():
     
     running = True
     while running:
+        check_quit()
+        if quit_requested:
+            break
+
         angle += ANGLE_SPEED
         if angle >= 2 * math.pi:
             break
