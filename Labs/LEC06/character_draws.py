@@ -91,7 +91,7 @@ def move_square():
     pass
 
 def move_triangle():
-    CENTER_X, CENTER_Y = 400, 200
+    CENTER_X, CENTER_Y = 400, 220
     RADIUS = 250
     SPEED = 10
 
