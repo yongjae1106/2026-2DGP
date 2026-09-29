@@ -87,7 +87,7 @@ def move_square(dir):
     print("Move Square")
     pass
 
-def move_triangle():
+def move_triangle(dir):
     CENTER_X, CENTER_Y = 400, 220
     RADIUS = 250
     SPEED = 10
@@ -100,8 +100,8 @@ def move_triangle():
         vy = CENTER_Y + RADIUS * math.sin(angle)
         vertices.append((vx, vy))
 
-    target_index = 1
     x, y = vertices[0]
+    target_index = dir % 3
 
     running = True
     while running:
@@ -116,7 +116,7 @@ def move_triangle():
         if dist <= SPEED:
             x, y = tx, ty
             reached_index = target_index
-            target_index = (target_index + 1) % 3
+            target_index = (target_index + dir) % 3
             if reached_index == 0:
                 running = False
         else:
@@ -140,7 +140,7 @@ while not quit_requested:
     move_square(dir)
     if quit_requested:
         break
-    move_triangle()
+    move_triangle(dir)
     dir *= -1
 
 close_canvas() 
