@@ -7,29 +7,13 @@ character = load_image('character.png')
 
 quit_requested = False
 
+def check_quit():
+    global quit_requested
+    for event in get_events():
+        if event.type == SDL_QUIT:
+            quit_requested = True
+            
 def move_circle():
-    CENTER_X, CENTER_Y = 400, 300
-    RADIUS = 150
-    ANGLE_SPEED = 0.05
-
-    angle = 0
-
-    running = True
-    while running:
-
-        angle += ANGLE_SPEED
-        if angle >= 2 * math.pi:
-            running = False
-
-        x = CENTER_X + RADIUS * math.cos(angle)
-        y = CENTER_Y + RADIUS * math.sin(angle)
-
-        clear_canvas()
-        grass.draw(400, 30)
-        character.draw(x, y)
-        update_canvas()
-        delay(0.01)
-    
     print("Move Circle")
     pass
     
@@ -45,6 +29,10 @@ def move_square():
     
     Running = True
     while Running == True:
+        check_quit()
+        if quit_requested:
+            break
+
         if direction == RIGHT:
             x += SPEED
             if x >= RIGHT_X:
@@ -94,6 +82,10 @@ def move_triangle():
 
     running = True
     while running:
+        check_quit()
+        if quit_requested:
+            break
+
         tx, ty = vertices[target_index]
         dx, dy = tx - x, ty - y
         dist = math.hypot(dx, dy)
