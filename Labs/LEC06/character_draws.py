@@ -7,8 +7,8 @@ character = load_image('character.png')
 
 def move_circle():
     CENTER_X, CENTER_Y = 400, 300
-    RADIUS = 150
-    ANGLE_SPEED = 0.05
+    RADIUS = 130
+    ANGLE_SPEED = 0.08
     
     angle = 0
     
@@ -41,6 +41,6 @@ while True:
     move_circle()
     move_square()
     move_triangle()
-    pass
+
 
 close_canvas() 
