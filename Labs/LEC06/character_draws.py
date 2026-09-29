@@ -8,14 +8,111 @@ character = load_image('character.png')
 quit_requested = False
 
 def move_circle():
+    CENTER_X, CENTER_Y = 400, 300
+    RADIUS = 150
+    ANGLE_SPEED = 0.05
+
+    angle = 0
+
+    running = True
+    while running:
+
+        angle += ANGLE_SPEED
+        if angle >= 2 * math.pi:
+            running = False
+
+        x = CENTER_X + RADIUS * math.cos(angle)
+        y = CENTER_Y + RADIUS * math.sin(angle)
+
+        clear_canvas()
+        grass.draw(400, 30)
+        character.draw(x, y)
+        update_canvas()
+        delay(0.01)
+    
     print("Move Circle")
     pass
     
 def move_square():
+    LEFT_X, RIGHT_X = 150, 650
+    BOTTOM_Y, TOP_Y = 100, 500
+    SPEED = 5
+
+    RIGHT, UP, LEFT, DOWN = range(4)
+
+    x, y = LEFT_X, BOTTOM_Y
+    direction = RIGHT
+    
+    Running = True
+    while Running == True:
+        if direction == RIGHT:
+            x += SPEED
+            if x >= RIGHT_X:
+                x = RIGHT_X
+                direction = UP
+        elif direction == UP:
+            y += SPEED
+            if y >= TOP_Y:
+                y = TOP_Y
+                direction = LEFT
+        elif direction == LEFT:
+            x -= SPEED
+            if x <= LEFT_X:
+                x = LEFT_X
+                direction = DOWN
+        elif direction == DOWN:
+            y -= SPEED
+            if y <= BOTTOM_Y:
+                y = BOTTOM_Y
+                direction = RIGHT
+                Running = False
+        
+        clear_canvas()
+        grass.draw(400, 30)
+        character.draw(x, y)
+        update_canvas()
+        delay(0.01)
+    
     print("Move Square")
     pass
     
 def move_triangle():
+    CENTER_X, CENTER_Y = 400, 300
+    RADIUS = 250
+    SPEED = 5
+
+    # 정삼각형의 세 꼭짓점을 중심에서 120도씩 떨어진 각도로 계산
+    vertices = []
+    for i in range(3):
+        angle = math.radians(90 + i * 120)
+        vx = CENTER_X + RADIUS * math.cos(angle)
+        vy = CENTER_Y + RADIUS * math.sin(angle)
+        vertices.append((vx, vy))
+
+    target_index = 1
+    x, y = vertices[0]
+
+    running = True
+    while running:
+        tx, ty = vertices[target_index]
+        dx, dy = tx - x, ty - y
+        dist = math.hypot(dx, dy)
+
+        if dist <= SPEED:
+            x, y = tx, ty
+            reached_index = target_index
+            target_index = (target_index + 1) % 3
+            if reached_index == 0:
+                running = False
+        else:
+            x += dx / dist * SPEED
+            y += dy / dist * SPEED
+
+        clear_canvas()
+        grass.draw(400, 30)
+        character.draw(x, y)
+        update_canvas()
+        delay(0.01)
     print("Move Triangle")
     pass
   
