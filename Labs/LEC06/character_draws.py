@@ -42,51 +42,48 @@ def move_circle(SPEED):
     print("Move Circle")
     pass
 
-def move_square():
-    
+def move_square(dir):
+
     LEFT_X, RIGHT_X = 150, 650
     BOTTOM_Y, TOP_Y = 100, 500
-    SPEED = 10
+    SQUARE_SPEED = 10
 
-    RIGHT, UP, LEFT, DOWN = range(4)
+    vertices = [
+        (LEFT_X, BOTTOM_Y),
+        (RIGHT_X, BOTTOM_Y),
+        (RIGHT_X, TOP_Y),
+        (LEFT_X, TOP_Y),
+    ]
 
-    x, y = LEFT_X, BOTTOM_Y
-    direction = RIGHT
-    
+    x, y = vertices[0]
+    target_index = dir % 4
+
     Running = True
     while Running == True:
         check_quit()
         if quit_requested:
             break
 
-        if direction == RIGHT:
-            x += SPEED
-            if x >= RIGHT_X:
-                x = RIGHT_X
-                direction = UP
-        elif direction == UP:
-            y += SPEED
-            if y >= TOP_Y:
-                y = TOP_Y
-                direction = LEFT
-        elif direction == LEFT:
-            x -= SPEED
-            if x <= LEFT_X:
-                x = LEFT_X
-                direction = DOWN
-        elif direction == DOWN:
-            y -= SPEED
-            if y <= BOTTOM_Y:
-                y = BOTTOM_Y
-                direction = RIGHT
+        tx, ty = vertices[target_index]
+        dx, dy = tx - x, ty - y
+        dist = math.hypot(dx, dy)
+
+        if dist <= SQUARE_SPEED:
+            x, y = tx, ty
+            reached_index = target_index
+            target_index = (target_index + dir) % 4
+            if reached_index == 0:
                 Running = False
-        
+        else:
+            x += dx / dist * SQUARE_SPEED
+            y += dy / dist * SQUARE_SPEED
+
         clear_canvas()
         grass.draw(400, 30)
         character.draw(x, y)
         update_canvas()
         delay(0.01)
-    
+
     print("Move Square")
     pass
 
@@ -143,8 +140,7 @@ while not quit_requested:
     move_square(dir)
     if quit_requested:
         break
-    move_triangle(dir)
+    move_triangle()
     dir *= -1
-
 
 close_canvas() 
