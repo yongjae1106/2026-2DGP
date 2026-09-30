@@ -1,0 +1,3 @@
+RuntimeWarning: Unable to preload all dependencies for SDL2_image. This module may not work correctly.
+RuntimeWarning: Unable to preload all dependencies for SDL2_ttf. This module may not work correctly.
+RuntimeWarning: Unable to preload all dependencies for SDL2_mixer. This module may not work correctly.
