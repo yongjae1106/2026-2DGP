@@ -9,7 +9,7 @@ quit_requested = False
 
 CHAR_X = 400
 GROUND_Y = 52
-SCALE = 4
+SCALE = 15
 
 def check_quit():
     global quit_requested
