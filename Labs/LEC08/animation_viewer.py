@@ -9,6 +9,8 @@ quit_requested = False
 CHAR_X = 400
 GROUND_Y = 52
 SCALE = 15
+REPEATS = 5
+HOLD_SECONDS = 1.0
 
 def check_quit():
     global quit_requested
@@ -27,7 +29,7 @@ def draw_frame(frame, hold=0.1):
     update_canvas()
     delay(hold)
 
-def play_animation(frames, repeats=5, hold=1.0):
+def play_animation(frames, repeats=REPEATS, hold=HOLD_SECONDS):
     for _ in range(repeats):
         for frame in frames:
             check_quit()
