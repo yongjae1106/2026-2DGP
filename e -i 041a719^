@@ -1,0 +1,35 @@
+[33m51caac9[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m LEC06 #6 21. draw_render 함수 추가
+[33mdd54866[m LEC06 #6 20. move_triangle 방향전환 구현
+[33ma0bd327[m LEC06 #6 19. move_square 방향전환 구현
+[33m3f63fa1[m LEC06 #6 18. move_circle 방향전환 구현
+[33m88949bf[m LEC06 #6 17. 방향전환을 위한 dir 변수 구축
+[33ma5a6fab[m LEC06 #6 16. move_circle() 원 크기 및 스피드 변경
+[33mae5b7ee[m LEC06 #6 15. move_triangle() CENTER_Y 변경
+[33m8a9ca15[m LEC06 #6 14. move_triangle() 속도 수정
+[33me75d799[m LEC06 #6 13. move_square() 속도 수정
+[33m884b5b8[m LEC06 #6 12. main while문에서 quit_requested 활용
+[33m569ace1[m LEC06 #6 11. move_triangle() 추가
+[33m03a0d96[m LEC06 #6 10. move_square 추가
+[33m774fff5[m LEC06 #6 9. move_circle() 함수 check_quit 활용
+[33m8e838e5[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m)[m LEC06 #6 8. check_quit() 함수추가
+[33m610c55b[m LEC06 #6 7. move_circle 오류수정
+[33ma7faede[m LEC06 #6 6.원 크기 및 속도 변경
+[33ma1ca300[m LEC06 #6 5. move_circle() 작성
+[33m7bf85b5[m LEC06 #6 4. pico2d 불러오기
+[33md0b2dce[m LEC06 #6 3. 함수 틀 작성
+[33m50d2b38[m LEC06 #6 2. 구조틀작성
+[33mc3d30c5[m LEC06 #6 1. 반복구조
+[33mdf11c70[m LEC06: add character_draws_ai.py as AI-authored copy of character_draws
+[33m975a61d[m LEC06: Reupload move func
+[33m1a2d827[m LEC06: check_quit() function add
+[33mb89299b[m LEC06: Move function add
+[33m3b73f28[m LEC06: pico2d render
+[33ma09c6ce[m LEC06: 함수 뼈대 작성
+[33m8fbe5e0[m LEC06: 반복 구조
+[33m041a719[m LEC06 반복구조 전체 작성
+[33me74b5e1[m LEC06 2
+[33md858338[m LEC06 실습
+[33m9b1b821[m LEC05: add square and circular motion assignments
+[33mec00e12[m LEC 06 UPLOAD
+[33m196d0a8[m LEC 05 UPDATE
+[33ma33ce45[m Initial Commit
