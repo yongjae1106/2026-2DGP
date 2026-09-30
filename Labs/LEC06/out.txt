@@ -1,3 +1,0 @@
-Pico2d is prepared.
-Move Circle
-Move Square
