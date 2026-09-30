@@ -9,7 +9,7 @@ CHAR_X = 400
 GROUND_Y = 52
 SCALE = 4
 
-def draw_frame(frame):
+def draw_frame(frame, hold=0.1):
     # 발(프레임 아래쪽)을 GROUND_Y에 고정해서, 프레임 높이가 달라도(공격 이펙트 등)
     # 캐릭터가 위아래로 흔들리지 않게 함
     left, bottom, width, height = frame
@@ -18,7 +18,13 @@ def draw_frame(frame):
     grass.draw(400, 30)
     character.clip_draw_to_origin(left, bottom, width, height, CHAR_X - w / 2, GROUND_Y, w, h)
     update_canvas()
-    delay(0.1)
+    delay(hold)
+
+def play_animation(frames, repeats=5, hold=1.0):
+    for _ in range(repeats):
+        for frame in frames:
+            draw_frame(frame)
+    draw_frame(frames[-1], hold=hold)
 
 WALK_FRAMES = [
     (9, 573, 21, 19),
@@ -34,8 +40,7 @@ WALK_FRAMES = [
 ]
 
 def action_walk():
-    for frame in WALK_FRAMES:
-        draw_frame(frame)
+    play_animation(WALK_FRAMES)
 
 RUN_FRAMES = [
     (9, 549, 19, 20),
@@ -49,8 +54,7 @@ RUN_FRAMES = [
 ]
 
 def action_run():
-    for frame in RUN_FRAMES:
-        draw_frame(frame)
+    play_animation(RUN_FRAMES)
 
 JUMP_FRAMES = [
     (10, 525, 20, 20),
@@ -65,8 +69,7 @@ JUMP_FRAMES = [
 ]
 
 def action_jump():
-    for frame in JUMP_FRAMES:
-        draw_frame(frame)
+    play_animation(JUMP_FRAMES)
 
 ATTACK_FRAMES = [
     (64, 424, 24, 33),
@@ -86,8 +89,7 @@ ATTACK_FRAMES = [
 ]
 
 def action_attack():
-    for frame in ATTACK_FRAMES:
-        draw_frame(frame)
+    play_animation(ATTACK_FRAMES)
 
 while True:
     action_walk()
