@@ -19,7 +19,9 @@ def check_quit():
             quit_requested = True
             
 def draw_frame(frame, hold=0.1):
-    # 발(프레임 아래쪽)을 GROUND_Y에 고정해서, 프레임 높이가 달라도(공격 이펙트 등)
+    # 프레임마다 가로폭(width)은 포즈에 따라 다르고(같은 동작 안에서도),
+    # 동작 사이에는 세로높이(height)도 다름(특히 ATTACK_FRAMES).
+    # 발(프레임 아래쪽)을 GROUND_Y에 고정해서, 높이가 달라도
     # 캐릭터가 위아래로 흔들리지 않게 함
     left, bottom, width, height = frame
     w, h = width * SCALE, height * SCALE
@@ -87,6 +89,9 @@ def action_jump():
     play_animation(JUMP_FRAMES)
 
 # character.png의 "Attacks" 첫 번째 행 (y 190~222, "Attacks" 텍스트 라벨은 제외)
+# 이펙트(모션선/찌르기)가 위로 뻗어있어서 다른 동작(height 19~20)보다 훨씬 큼(height 33)
+# -> draw_frame()에서 발 위치를 GROUND_Y로 고정해서 이 높이차 때문에 캐릭터가
+#    아래로 내려가 보이는 걸 방지함
 ATTACK_FRAMES = [
     (64, 424, 24, 33),
     (91, 424, 21, 33),
