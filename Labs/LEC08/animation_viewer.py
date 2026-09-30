@@ -36,6 +36,7 @@ def play_animation(frames, repeats=5, hold=1.0):
             draw_frame(frame)
     draw_frame(frames[-1], hold=hold)
 
+# character.png의 "Walking" 행 (y 55~73, 왼쪽부터 10프레임)
 WALK_FRAMES = [
     (9, 573, 21, 19),
     (34, 573, 20, 19),
@@ -52,6 +53,7 @@ WALK_FRAMES = [
 def action_walk():
     play_animation(WALK_FRAMES)
 
+# character.png의 "Running then Skid" 행 (y 78~97, 멈추는 마지막 프레임은 제외)
 RUN_FRAMES = [
     (9, 549, 19, 20),
     (32, 549, 18, 20),
@@ -66,6 +68,7 @@ RUN_FRAMES = [
 def action_run():
     play_animation(RUN_FRAMES)
 
+# character.png의 "Jumping/Landing" 행 (y 102~121, 첫 프레임은 픽셀이 붙어있어 수동으로 잘라냄)
 JUMP_FRAMES = [
     (10, 525, 20, 20),
     (30, 525, 21, 20),
@@ -81,6 +84,7 @@ JUMP_FRAMES = [
 def action_jump():
     play_animation(JUMP_FRAMES)
 
+# character.png의 "Attacks" 첫 번째 행 (y 190~222, "Attacks" 텍스트 라벨은 제외)
 ATTACK_FRAMES = [
     (64, 424, 24, 33),
     (91, 424, 21, 33),
