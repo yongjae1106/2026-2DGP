@@ -5,10 +5,18 @@ open_canvas(800, 600)
 grass = load_image('grass.png')
 character = load_image('character.png')
 
+quit_requested = False
+
 CHAR_X = 400
 GROUND_Y = 52
 SCALE = 4
 
+def check_quit():
+    global quit_requested
+    for event in get_events():
+        if event.type == SDL_QUIT:
+            quit_requested = True
+            
 def draw_frame(frame, hold=0.1):
     # 발(프레임 아래쪽)을 GROUND_Y에 고정해서, 프레임 높이가 달라도(공격 이펙트 등)
     # 캐릭터가 위아래로 흔들리지 않게 함
@@ -23,6 +31,9 @@ def draw_frame(frame, hold=0.1):
 def play_animation(frames, repeats=5, hold=1.0):
     for _ in range(repeats):
         for frame in frames:
+            check_quit()
+            if quit_requested:
+                return
             draw_frame(frame)
     draw_frame(frames[-1], hold=hold)
 
@@ -91,7 +102,7 @@ ATTACK_FRAMES = [
 def action_attack():
     play_animation(ATTACK_FRAMES)
 
-while True:
+while not quit_requested:
     action_walk()
     action_run()
     action_jump()
