@@ -1,3 +1,10 @@
+from pico2d import *
+import math
+
+open_canvas(800, 600)
+grass = load_image('grass.png')
+character = load_image('character.png')
+
 def action_walk():
     print("Walking...")
     pass
@@ -17,3 +24,5 @@ while True:
     action_jump()
     action_attack()
     pass
+
+close_canvas()
