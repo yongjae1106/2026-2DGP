@@ -27,9 +27,24 @@ def action_walk():
         update_canvas()
         delay(0.1)
     
+RUN_FRAMES = [
+    (9, 549, 19, 20),
+    (32, 549, 18, 20),
+    (54, 549, 17, 20),
+    (75, 549, 19, 20),
+    (98, 549, 24, 20),
+    (126, 549, 19, 20),
+    (149, 549, 17, 20),
+    (170, 549, 18, 20),
+]
+
 def action_run():
-    print("Running...")
-    pass
+    for left, bottom, width, height in RUN_FRAMES:
+        clear_canvas()
+        grass.draw(400, 30)
+        character.clip_draw(left, bottom, width, height, 400, 90, width * 4, height * 4)
+        update_canvas()
+        delay(0.1)
 def action_jump():
     print("Jumping...")
     pass
