@@ -45,9 +45,25 @@ def action_run():
         character.clip_draw(left, bottom, width, height, 400, 90, width * 4, height * 4)
         update_canvas()
         delay(0.1)
+JUMP_FRAMES = [
+    (10, 525, 20, 20),
+    (30, 525, 21, 20),
+    (55, 525, 20, 20),
+    (79, 525, 21, 20),
+    (104, 525, 20, 20),
+    (128, 525, 21, 20),
+    (153, 525, 22, 20),
+    (179, 525, 21, 20),
+    (204, 525, 20, 20),
+]
+
 def action_jump():
-    print("Jumping...")
-    pass
+    for left, bottom, width, height in JUMP_FRAMES:
+        clear_canvas()
+        grass.draw(400, 30)
+        character.clip_draw(left, bottom, width, height, 400, 90, width * 4, height * 4)
+        update_canvas()
+        delay(0.1)
 def action_attack():
     print("Attacking...")
     pass
