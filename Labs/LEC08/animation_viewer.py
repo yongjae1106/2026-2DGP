@@ -14,6 +14,9 @@ SCALE = 15
 REPEATS = 5
 HOLD_SECONDS = 1.0
 SKY_COLOR = (135, 206, 235)
+TREE_SCALE = 15
+TREE_X = 600
+TREE_BASE_Y = -100
 
 def check_quit():
     global quit_requested
@@ -30,7 +33,8 @@ def draw_frame(frame, hold=0.1):
     w, h = width * SCALE, height * SCALE
     clear_canvas()
     draw_rectangle(0, 0, 800, 600, *SKY_COLOR, filled=True)
-    tree.draw(100, 130)
+    tree_w, tree_h = tree.w * TREE_SCALE, tree.h * TREE_SCALE
+    tree.draw(TREE_X, TREE_BASE_Y + tree_h / 2, tree_w, tree_h)
     grass.draw(400, 30)
     character.clip_draw_to_origin(left, bottom, width, height, CHAR_X - w / 2, GROUND_Y, w, h)
     update_canvas()
