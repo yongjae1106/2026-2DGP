@@ -5,6 +5,21 @@ open_canvas(800, 600)
 grass = load_image('grass.png')
 character = load_image('character.png')
 
+CHAR_X = 400
+GROUND_Y = 52
+SCALE = 4
+
+def draw_frame(frame):
+    # 발(프레임 아래쪽)을 GROUND_Y에 고정해서, 프레임 높이가 달라도(공격 이펙트 등)
+    # 캐릭터가 위아래로 흔들리지 않게 함
+    left, bottom, width, height = frame
+    w, h = width * SCALE, height * SCALE
+    clear_canvas()
+    grass.draw(400, 30)
+    character.clip_draw_to_origin(left, bottom, width, height, CHAR_X - w / 2, GROUND_Y, w, h)
+    update_canvas()
+    delay(0.1)
+
 WALK_FRAMES = [
     (9, 573, 21, 19),
     (34, 573, 20, 19),
@@ -19,14 +34,9 @@ WALK_FRAMES = [
 ]
 
 def action_walk():
-    # 3단계: 프레임을 하나씩 순회하며 그려서 걷는 모션처럼 보이게 함
-    for left, bottom, width, height in WALK_FRAMES:
-        clear_canvas()
-        grass.draw(400, 30)
-        character.clip_draw(left, bottom, width, height, 400, 90, width * 4, height * 4)
-        update_canvas()
-        delay(0.1)
-    
+    for frame in WALK_FRAMES:
+        draw_frame(frame)
+
 RUN_FRAMES = [
     (9, 549, 19, 20),
     (32, 549, 18, 20),
@@ -39,12 +49,9 @@ RUN_FRAMES = [
 ]
 
 def action_run():
-    for left, bottom, width, height in RUN_FRAMES:
-        clear_canvas()
-        grass.draw(400, 30)
-        character.clip_draw(left, bottom, width, height, 400, 90, width * 4, height * 4)
-        update_canvas()
-        delay(0.1)
+    for frame in RUN_FRAMES:
+        draw_frame(frame)
+
 JUMP_FRAMES = [
     (10, 525, 20, 20),
     (30, 525, 21, 20),
@@ -58,12 +65,9 @@ JUMP_FRAMES = [
 ]
 
 def action_jump():
-    for left, bottom, width, height in JUMP_FRAMES:
-        clear_canvas()
-        grass.draw(400, 30)
-        character.clip_draw(left, bottom, width, height, 400, 90, width * 4, height * 4)
-        update_canvas()
-        delay(0.1)
+    for frame in JUMP_FRAMES:
+        draw_frame(frame)
+
 ATTACK_FRAMES = [
     (64, 424, 24, 33),
     (91, 424, 21, 33),
@@ -82,12 +86,8 @@ ATTACK_FRAMES = [
 ]
 
 def action_attack():
-    for left, bottom, width, height in ATTACK_FRAMES:
-        clear_canvas()
-        grass.draw(400, 30)
-        character.clip_draw(left, bottom, width, height, 400, 90, width * 4, height * 4)
-        update_canvas()
-        delay(0.1)
+    for frame in ATTACK_FRAMES:
+        draw_frame(frame)
 
 while True:
     action_walk()
