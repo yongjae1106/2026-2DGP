@@ -32,16 +32,22 @@ CHAR_X = 400
 GROUND_Y = 52
 SCALE = 5
 
+def draw_frame(frame, hold=0.1):
+    # 발(프레임 아래쪽)을 GROUND_Y에 고정해서, 동작마다 프레임 높이가
+    # 달라도 캐릭터가 위아래로 흔들리지 않게 함
+    left, bottom, width, height = frame
+    w, h = width * SCALE, height * SCALE
+    clear_canvas()
+    grass.draw(400, 30)
+    sonic.clip_draw_to_origin(left, bottom, width, height, CHAR_X - w / 2, GROUND_Y, w, h)
+    update_canvas()
+    delay(hold)
+
 while not quit_requested:
-    for left, bottom, width, height in WALK_FRAMES:
+    for frame in WALK_FRAMES:
         check_quit()
         if quit_requested:
             break
-        w, h = width * SCALE, height * SCALE
-        clear_canvas()
-        grass.draw(400, 30)
-        sonic.clip_draw_to_origin(left, bottom, width, height, CHAR_X - w / 2, GROUND_Y, w, h)
-        update_canvas()
-        delay(0.1)
+        draw_frame(frame)
 
 close_canvas()
