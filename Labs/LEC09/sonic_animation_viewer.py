@@ -28,17 +28,30 @@ WALK_FRAMES = [
     (302, 447, 29, 39),
 ]
 
+# 카메라 기준점: 캐릭터 발 위치. ZOOM을 바꿔도 이 점은 화면에서 안 움직임
 CHAR_X = 400
 GROUND_Y = 52
-SCALE = 5
+
+BASE_CHAR_SCALE = 5   # 캐릭터 픽셀아트 기본 확대 배율
+ZOOM = 2               # 창 크기(800x600)는 그대로 두고, 보이는 장면 전체를 확대하는 배율
+SKY_COLOR = (135, 206, 235)
+
+def zoom_pos(x, y):
+    return CHAR_X + (x - CHAR_X) * ZOOM, GROUND_Y + (y - GROUND_Y) * ZOOM
+
+def zoom_size(w, h):
+    return w * ZOOM, h * ZOOM
 
 def draw_frame(frame, hold=0.1):
     # 발(프레임 아래쪽)을 GROUND_Y에 고정해서, 동작마다 프레임 높이가
     # 달라도 캐릭터가 위아래로 흔들리지 않게 함
     left, bottom, width, height = frame
-    w, h = width * SCALE, height * SCALE
+    char_scale = BASE_CHAR_SCALE * ZOOM
+    w, h = width * char_scale, height * char_scale
     clear_canvas()
-    grass.draw(400, 30)
+    draw_rectangle(0, 0, 800, 600, *SKY_COLOR, filled=True)
+    grass_x, grass_y = zoom_pos(400, 30)
+    grass.draw(grass_x, grass_y, *zoom_size(grass.w, grass.h))
     sonic.clip_draw_to_origin(left, bottom, width, height, CHAR_X - w / 2, GROUND_Y, w, h)
     update_canvas()
     delay(hold)
