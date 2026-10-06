@@ -102,10 +102,24 @@ IDLE_FRAMES = [
 def action_idle():
     play_animation(IDLE_FRAMES)
 
+# sonic-sprite.png의 브레이크(Skid) 행 (y 121~163, 6프레임)
+SKID_FRAMES = [
+    (1, 361, 33, 43),
+    (39, 361, 35, 43),
+    (89, 361, 35, 43),
+    (130, 361, 34, 43),
+    (181, 361, 34, 43),
+    (228, 361, 33, 43),
+]
+
+def action_skid():
+    play_animation(SKID_FRAMES)
+
 while not quit_requested:
     action_walk()
     action_run()
     action_roll()
     action_idle()
+    action_skid()
 
 close_canvas()
