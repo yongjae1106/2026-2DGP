@@ -43,11 +43,18 @@ def draw_frame(frame, hold=0.1):
     update_canvas()
     delay(hold)
 
+def play_animation(frames, repeats=5):
+    for _ in range(repeats):
+        for frame in frames:
+            check_quit()
+            if quit_requested:
+                return
+            draw_frame(frame)
+
+def action_walk():
+    play_animation(WALK_FRAMES)
+
 while not quit_requested:
-    for frame in WALK_FRAMES:
-        check_quit()
-        if quit_requested:
-            break
-        draw_frame(frame)
+    action_walk()
 
 close_canvas()
