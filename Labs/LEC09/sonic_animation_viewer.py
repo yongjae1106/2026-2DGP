@@ -28,7 +28,17 @@ WALK_FRAMES = [
     (302, 447, 29, 39),
 ]
 
+CHAR_X = 400
+GROUND_Y = 52
+SCALE = 5
+
 while not quit_requested:
     check_quit()
+    left, bottom, width, height = WALK_FRAMES[0]
+    w, h = width * SCALE, height * SCALE
+    clear_canvas()
+    grass.draw(400, 30)
+    sonic.clip_draw_to_origin(left, bottom, width, height, CHAR_X - w / 2, GROUND_Y, w, h)
+    update_canvas()
 
 close_canvas()
