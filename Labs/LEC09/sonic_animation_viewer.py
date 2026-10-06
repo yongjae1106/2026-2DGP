@@ -74,8 +74,22 @@ RUN_FRAMES = [
 def action_run():
     play_animation(RUN_FRAMES)
 
+# sonic-sprite.png의 구르기(Roll) 행 (y 206~232, 6프레임)
+ROLL_FRAMES = [
+    (1, 292, 30, 27),
+    (36, 292, 29, 27),
+    (70, 292, 29, 27),
+    (105, 292, 29, 27),
+    (139, 292, 29, 27),
+    (174, 292, 29, 27),
+]
+
+def action_roll():
+    play_animation(ROLL_FRAMES)
+
 while not quit_requested:
     action_walk()
     action_run()
+    action_roll()
 
 close_canvas()
