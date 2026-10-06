@@ -128,11 +128,23 @@ SKID_FRAMES = [
 def action_skid():
     play_animation(SKID_FRAMES)
 
+# sonic-sprite.png의 발 구르기(Tap, 조급해하는 아이들) 행 (y 426~468, 4프레임)
+TAP_FRAMES = [
+    (6, 56, 34, 43),
+    (49, 56, 34, 43),
+    (96, 56, 23, 43),
+    (125, 56, 23, 43),
+]
+
+def action_tap():
+    play_animation(TAP_FRAMES)
+
 while not quit_requested:
     action_walk()
     action_run()
     action_roll()
     action_idle()
     action_skid()
+    action_tap()
 
 close_canvas()
