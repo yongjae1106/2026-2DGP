@@ -55,7 +55,27 @@ def play_animation(frames, repeats=5, hold=1.0):
 def action_walk():
     play_animation(WALK_FRAMES)
 
+# sonic-sprite.png의 달리기(Run) 행 (y 79~117, 12프레임)
+RUN_FRAMES = [
+    (8, 407, 26, 39),
+    (37, 407, 27, 39),
+    (65, 407, 31, 39),
+    (97, 407, 37, 39),
+    (135, 407, 32, 39),
+    (170, 407, 32, 39),
+    (206, 407, 26, 39),
+    (238, 407, 24, 39),
+    (263, 407, 30, 39),
+    (295, 407, 36, 39),
+    (334, 407, 32, 39),
+    (370, 407, 29, 39),
+]
+
+def action_run():
+    play_animation(RUN_FRAMES)
+
 while not quit_requested:
     action_walk()
+    action_run()
 
 close_canvas()
