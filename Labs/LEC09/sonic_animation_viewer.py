@@ -87,9 +87,25 @@ ROLL_FRAMES = [
 def action_roll():
     play_animation(ROLL_FRAMES)
 
+# sonic-sprite.png의 아이들(Idle, 뒤돌아보기) 행 (y 326~370, 8프레임)
+IDLE_FRAMES = [
+    (1, 154, 24, 45),
+    (31, 154, 29, 45),
+    (65, 154, 20, 45),
+    (90, 154, 25, 45),
+    (119, 154, 25, 45),
+    (149, 154, 20, 45),
+    (184, 154, 40, 45),
+    (232, 154, 39, 45),
+]
+
+def action_idle():
+    play_animation(IDLE_FRAMES)
+
 while not quit_requested:
     action_walk()
     action_run()
     action_roll()
+    action_idle()
 
 close_canvas()
