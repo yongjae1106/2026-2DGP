@@ -16,7 +16,7 @@ class Boy:
     def __init__(self):
         self.x = random.randint(100, 700)
         self.y = 90
-        self.frame = 0
+        self.frame = random.randint(0, 7)
         self.image = load_image('run_animation.png')
         
     def update(self):
