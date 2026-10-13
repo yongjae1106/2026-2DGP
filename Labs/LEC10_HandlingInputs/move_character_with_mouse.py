@@ -34,7 +34,6 @@ frame = 0
 x, y = TUK_WIDTH // 2, TUK_HEIGHT // 2
 hide_cursor()
 
-
 while running:
     clear_canvas()
 
