@@ -37,24 +37,27 @@ def handle_events():
 
 def reset_world():
     global running
-    global grass
-    global team
+    global world
+    
     running = True
+    world = []
+    
     grass = Grass()
+    world.append(grass)
+    
     team = [Boy() for i in range(11)]
+    world += team
 
 
 def update_world():
-    grass.update()
-    for boy in team:
-        boy.update()
+    for obj in world:
+        obj.update()
     pass
 
 def render_world():
     clear_canvas()
-    grass.draw()
-    for boy in team:
-        boy.draw()
+    for obj in world:
+        obj.draw()
     update_canvas()
 
 
