@@ -1,5 +1,4 @@
-from pico2d import *
-
+from pico2d import load_image
 
 class Grass:
     def __init__(self):

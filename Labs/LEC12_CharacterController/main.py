@@ -16,14 +16,15 @@ def handle_events():
 
 def reset_world():
     global world
+    global boy
 
     world = []
 
     grass = Grass()
     world.append(grass)
 
-    team = [Boy() for i in range(10000)]
-    world += team
+    boy = Boy()
+    world.append(boy)
 
 
 def update_world():
